@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+    height: 100%;
+    background-color: #1d1f21;
+    color: #c5c8c6;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+.parent {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .header {
+        text-align: center;
+        height: 26vh;
+        .search {
+            input {
+                background-color: #151a30;
+                border: none;
+                position: absolute;
+                right: 1em;
+                z-index: 5;
+                color: #fff;
+                border-radius: 5px;
+                padding: 0.5em;
+                top: 1em;
+            }
+        }
+    }
+    .footer {
+        text-align: center;
+        font-size: 10px;
+        color: #c5c8c6;
+        padding: 1em;
+        margin-top: auto;
+        p {
+            margin: 0;
+        }
+    }
+    .shows-parent {
+        width: 93vw;
+        margin: 0 auto;
+        padding: 40px 0;
+        .child {
+            display: flex;
+            flex-direction: column;
+            .section-label {
+                cursor: pointer;
+                font-size: 18px;
+                padding-left: 1.8%;
+                margin-bottom: 1em;
+                font-weight: bold;
+                z-index: 1;
+                margin-top: 1em;
+            }
+            .shows-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                &.wrapper {
+                    flex-wrap: initial;
+                    justify-content: unset;
+                    overflow-x: scroll;
+                    scrollbar-width: none;
+                    scroll-behavior: smooth;
+                    -ms-overflow-style: none;
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+                }
+            }
+        }
+        .label-section {
+            display: flex;
+            align-items: center;
+            p {
+                cursor: pointer;
+                opacity: 0;
+                color: #b5bd68;
+                margin-left: 1em;
+                font-weight: bold;
+                -webkit-transition: max-width 1s,opacity 1s,-webkit-transform 750ms;
+                transition: max-width 1s,opacity 1s,-webkit-transform 750ms;
+                -o-transition: max-width 1s,opacity 1s,-o-transform 750ms;
+                -moz-transition: max-width 1s,opacity 1s,transform 750ms,-moz-transform 750ms;
+                transition: max-width 1s,opacity 1s,transform 750ms;
+                transition: max-width 1s,opacity 1s,transform 750ms,-webkit-transform 750ms,-moz-transform 750ms,-o-transform 750ms;
+            }
+            .section-label:hover + p {
+                -webkit-transform: translate(1vw,0);
+                -moz-transform: translate(1vw,0);
+                -ms-transform: translate(1vw,0);
+                -o-transform: translate(1vw,0);
+                transform: translate(1vw,0);
+                opacity: 1;
+            }
+        }
+        .carousel {
+            position: relative;
+        }
+        &.list {
+            width: 93vw;
+            .child {
+                display: flex;
+                flex-direction: column;
+                .section-label {
+                    padding: 0;
+                    margin-top: 1em;
+                    &.search {
+                        padding-left: 1.8%;
+                    }
+                }
+            }
+        }
+    }
+}

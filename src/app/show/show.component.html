@@ -1,0 +1,15 @@
+<div class="show-card"
+     [id]="showID()"
+     (mouseover)="setHovered()"
+     (mouseleave)="clearHover()"
+     [ngClass]="{inCarousel: inCarousel, isPopup: isPopup}">
+  <img *ngIf="!isExtra" src="{{show.artwork}}">
+  <div *ngIf="!isExtra" class="show-content">
+    <p class="description">{{show.description}}</p>
+    <p class="p-label">Premiere: <label>{{show.premiere}}</label></p>
+    <p class="p-label">Finale: <label>{{show.finale}}</label></p>
+    <p class="p-label">Seasons: <label>{{show.seasons}}</label></p>
+    <p class="p-label">Runtime: <label>{{show.runtime}}</label></p>
+    <p class="p-label canceled">Canceled: <label>{{show.canceled}}</label></p>
+  </div>
+</div>

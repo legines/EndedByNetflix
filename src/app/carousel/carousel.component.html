@@ -1,0 +1,7 @@
+<div class="shows-container wrapper" id="{{genre}}-content">
+  <a (click)='scrollLeft()' class="arrow__btn left-arrow">‹</a>
+  <show-component *ngFor="let show of genreSection" [show]="show" [inCarousel]="true" (sendHovered)="passHovered($event)"></show-component>
+  <a (click)="scrollRight()" class="arrow__btn right-arrow">›</a>
+
+  <show-component *ngIf="hovered" [show]="hovered" [isPopup]="true"></show-component>
+</div>

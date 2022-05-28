@@ -1,0 +1,62 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<div class="parent">
+  <div class="header">
+    <div class="search">
+      <input class="searchTerm" type="text" name="searchTerm" 
+        placeholder="Search all shows"
+        [(ngModel)]="searchTerm" (ngModelChange)="search(searchTerm)">
+    </div>
+    <app-header></app-header>
+  </div>
+  <div class="shows-parent" [ngClass]="{list: !genreChosen}">
+    <div *ngIf="genreChosen && !searchTerm" class="child">
+      <div class="label-section">
+        <label class="section-label" (click)="clearGenre()">Viewing all in '{{genreChosen.split('_').join(' ') | titlecase}}'</label>
+      </div>
+      <div class="shows-container">
+        <show-component *ngFor="let show of shows" [show]="show"></show-component>
+        <show-component *ngFor="let extra of extras" [isExtra]="true"></show-component>
+      </div>
+    </div>
+    <div *ngIf="searchTerm" class="child">
+      <div class="label-section">
+        <label class="section-label search" (click)="clearGenre()">Search Results</label>
+      </div>
+      <div class="shows-container">
+        <show-component *ngFor="let show of foundShows" [show]="show"></show-component>
+        <show-component *ngFor="let extra of extras" [isExtra]="true"></show-component>
+      </div>
+    </div>
+    <div *ngIf="!genreChosen && !searchTerm" class="child">
+      <div *ngFor="let genreSection of genreSections" class="carousel">
+        <div class="label-section">
+          <label class="section-label" (click)="chooseGenre(genreSection)">{{genreSection.split('_').join(' ') | titlecase}}</label>
+          <p>View All ></p>
+        </div>
+        <app-carousel [genreSection]="organizedShows[genreSection]" [genre]="genreSection"></app-carousel>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <label>&copy; 2022 LG</label>
+    <p>Last updated: 5-1-22</p>
+  </div>
+</div>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<router-outlet></router-outlet>

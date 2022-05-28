@@ -1,0 +1,30 @@
+.shows-container.wrapper {
+    .arrow__btn {
+        position: absolute;
+        color: #fff;
+        text-decoration: none;
+        font-size: 3em;
+        width: 0;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        cursor: pointer;
+        box-shadow: 0 0 33px 0px rgb(0, 0, 0);
+        background: rgba(20,20,20,.5);
+        height: 132px;
+        &:hover {
+            background: rgba(20,20,20,.7);
+        }
+    }
+    .left-arrow {
+        left:0;
+    }
+    .right-arrow {
+        right: 0;
+    }
+    &.hidden-sections {
+        display: none;
+    }
+}
