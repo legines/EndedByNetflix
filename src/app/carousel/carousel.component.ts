@@ -32,8 +32,17 @@ export class CarouselComponent implements OnInit {
     if (event) {
       const positions = document.getElementById(`${event.title}`)!.getBoundingClientRect();
       setTimeout(()=> {
-        document.getElementById('is-popup')!.style.left = `${positions.left-100}px`;
-        // document.getElementById('is-popup')!.style.right = `${positions.right}px`;
+        if (document.getElementById('is-popup')) {
+          document.getElementById('is-popup')!.style.left = `${positions.left-100}px`;
+          document.getElementById('is-popup')!.style.opacity = '1';
+          const popupPosition = document.getElementById('is-popup')!.getBoundingClientRect();
+          if (popupPosition.x < 0) {
+            document.getElementById('is-popup')!.style.left = `${positions.left}px`;
+          }
+          if ((popupPosition.x + popupPosition.width) > window.innerWidth) {
+            document.getElementById('is-popup')!.style.left = `${positions.left-350}px`;
+          }
+        }
       });
     }
     this.hovered = event;
