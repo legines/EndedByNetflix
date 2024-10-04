@@ -1,12 +1,3 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <div class="parent">
   <div class="header">
     <div class="search">
@@ -18,8 +9,9 @@
   </div>
   <div class="shows-parent" [ngClass]="{list: !genreChosen}">
     <div *ngIf="genreChosen && !searchTerm" class="child">
-      <div class="label-section">
-        <label class="section-label" (click)="clearGenre()">Viewing all in '{{genreChosen.split('_').join(' ') | titlecase}}'</label>
+      <div class="label-section all-genre">
+        <label class="section-label all-genre" (click)="clearGenre()">Viewing all in '{{genreChosen.split('_').join(' ') | titlecase}}'</label>
+        <p (click)="clearGenre()">< Go back</p>
       </div>
       <div class="shows-container">
         <show-component *ngFor="let show of shows" [show]="show"></show-component>
@@ -38,8 +30,8 @@
     <div *ngIf="!genreChosen && !searchTerm" class="child">
       <div *ngFor="let genreSection of genreSections" class="carousel">
         <div class="label-section">
-          <label class="section-label" (click)="chooseGenre(genreSection)">{{genreSection.split('_').join(' ') | titlecase}}</label>
-          <p>View All ></p>
+          <label class="section-label home-genre" (click)="chooseGenre(genreSection)">{{genreSection.split('_').join(' ') | titlecase}}</label>
+          <p>Click to view all ></p>
         </div>
         <app-carousel [genreSection]="organizedShows[genreSection]" [genre]="genreSection"></app-carousel>
       </div>
@@ -50,13 +42,5 @@
     <p>Last updated: 5-1-22</p>
   </div>
 </div>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <router-outlet></router-outlet>
